@@ -12,3 +12,10 @@ build-backend = "flit_core.buildapi"
 
 [tool.setuptools]
 py-modules = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["flaskr"]
