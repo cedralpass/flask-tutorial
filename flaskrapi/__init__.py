@@ -1,6 +1,7 @@
 import os
 from flask import Flask, jsonify
 from environs import Env
+from datetime import datetime
 
 def create_app(test_config=None):
     # create and configure the app
@@ -32,6 +33,7 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/hello')
     def hello():
-        json_obj ={"key":"Hello, World! in JSON"}
+        time_string = "Hello, World! in JSON. Its " + datetime.now().strftime("%I:%M%p on %B %d, %Y") + " right now!"
+        json_obj ={"key":time_string}
         return jsonify(json_obj)
     return app
