@@ -1,5 +1,8 @@
 # Set base image (host OS)
-FROM python:3.11-alpine
+# need to build with --platform=linux/amd64 to get around /usr/local/bin/gunicorn Exec format error
+# https://stackoverflow.com/questions/75996884/usr-local-bin-gunicorn-exec-format-error-apple-m1-chip
+
+FROM --platform=linux/amd64 python:3.11-alpine 
 
 # By default, listen on port 8000
 EXPOSE 8000/tcp
