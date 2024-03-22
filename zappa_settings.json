@@ -1,0 +1,10 @@
+{
+    "staging": {
+        "app_function": "flaskrapi.__init__.create_app()",
+        "aws_region": "us-west-2",
+        "profile_name": "default",
+        "project_name": "flask-tutorial",
+        "runtime": "python3.11",
+        "s3_bucket": "zappa-f7e20m87s"
+    }
+}
