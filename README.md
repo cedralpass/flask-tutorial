@@ -1,4 +1,4 @@
-# recap
+# Flaskr
 
 #setup
 ## Init DB
@@ -24,4 +24,10 @@ Run the following command to run in produciton
 ```bash
 gunicorn -w 4 'flaskr:create_app()' -b 127.0.0.1:8080 --access-logfile=gunicorn.http.log --error-logfile=gunicorn.error.log
 ```
+```bash
+gunicorn -w 4 'flaskrapi:create_app()' -b 127.0.0.1:8080 --access-logfile=gunicorn.http.log --error-logfile=gunicorn.error.log
+```
 [gunicorn settings](https://docs.gunicorn.org/en/stable/settings.html)
+
+# Deploy to Fargate
+[deploy to fargate](docs/deploy_to_fargate.md)
