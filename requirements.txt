@@ -4,6 +4,5 @@ coverage==7.4.3
 build==1.1.1
 gunicorn==21.2.0
 environs==10.3.0
-#aws-cdk-lib==2.133.0
-#constructs>=10.0.0,<11.0.0
-#zappa
+aws-cdk-lib==2.133.0
+constructs>=10.0.0,<11.0.0
