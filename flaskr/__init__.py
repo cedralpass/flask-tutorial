@@ -54,6 +54,12 @@ def create_app(test_config=None):
         job = launch_task(name='example', description='example', seconds=5)
         return 'Job is Executing ' + job.id + ' its status ' + job.get_status(refresh=True)
     
+    # a url for showing a job_id
+    @app.route('/job/<string:id>/show')
+    def job_show(id):
+        job = current_app.task_queue.fetch_job(job_id=id)
+        return 'Job is Executing ' + job.id + ' its status ' + job.get_status(refresh=True)
+    
     from . import db
     db.init_app(app) #register the db init code
 
