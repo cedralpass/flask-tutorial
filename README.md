@@ -31,3 +31,6 @@ gunicorn -w 4 'flaskrapi:create_app()' -b 127.0.0.1:8080 --access-logfile=gunico
 
 # Deploy to Fargate
 [deploy to fargate](docs/deploy_to_fargate.md)
+
+# Running Async Jobs with RQ
+[background jobs with RQ](docs/background_jobs.md)
