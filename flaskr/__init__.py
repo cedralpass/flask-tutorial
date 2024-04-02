@@ -4,6 +4,7 @@ from flask import Flask, current_app
 from environs import Env
 from redis import Redis
 import rq
+from flaskr.config import FlaskrConfig
 
 
 def create_app(test_config=None):
@@ -13,26 +14,13 @@ def create_app(test_config=None):
     #TODO: figure out better config
     env = Env()
     env.read_env()
-    app.config['API_KEY'] = env("API_KEY")
-    app.config['REDIS_URL'] = env("REDIS_URL")
-    
-    
-   
-    
     
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        SECRET_KEY=FlaskrConfig.SECRET_KEY,
+        DATABASE=FlaskrConfig.SQLALCHEMY_DATABASE_URI,
+        API_KEY=FlaskrConfig.API_KEY,
+        REDIS_URL=FlaskrConfig.REDIS_URL,
     )
-
-    
-
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
 
     # ensure the instance folder exists
     try:
